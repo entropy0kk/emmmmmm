@@ -1,0 +1,322 @@
+/* Modern Romantic - side previews and general cleanup */
+:root {
+    --primary: #ff4d6d;
+    --secondary: #ffccd5;
+    --text: #590d22;
+    --white: #fffcf9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    background: var(--secondary);
+    color: var(--text);
+}
+
+#game-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: radial-gradient(circle, #fff0f3 0%, #ffccd5 100%);
+}
+
+canvas {
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.modern-panel {
+    background: rgba(255, 252, 249, 0.85);
+    backdrop-filter: blur(12px);
+    border: 4px solid var(--primary);
+    border-radius: 20px;
+    padding: 3rem 3.5rem;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(89, 13, 34, 0.2), inset 0 0 20px rgba(255, 77, 109, 0.1);
+    pointer-events: auto;
+    animation: panelPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modern-panel p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+@keyframes panelPop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.start-actions {
+    margin-top: 50px;
+}
+
+.romantic-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 900;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #ff0a54, #ff4d6d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 0 #c9184a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #c9184a;
+    background: #ff758f;
+}
+
+/* When NO button is running, disable hover transform so it doesn't glitch */
+.btn-primary.running:hover {
+    transform: none;
+    box-shadow: 0 8px 0 #c9184a;
+}
+
+.btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #c9184a;
+}
+
+/* Button group with bigger gaps */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* HUD */
+#hud {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    z-index: 20;
+}
+
+.hud-panel {
+    background: rgba(255, 252, 249, 0.9);
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar-bg {
+    height: 12px;
+    background: #ffe5ec;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff4d6d, #ff0a54);
+    transition: width 0.3s ease;
+}
+
+.score-text {
+    text-align: center;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+/* Side Previews */
+.side-previews {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    pointer-events: none;
+}
+
+.preview-card {
+    background: rgba(255, 252, 249, 0.85);
+    backdrop-filter: blur(10px);
+    border: 3px solid var(--primary);
+    border-radius: 15px;
+    padding: 10px;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(89, 13, 34, 0.15);
+    pointer-events: auto;
+    animation: slideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.preview-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.preview-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.preview-canvas {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+}
+
+.preview-label {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--primary);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Confetti */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* BG Hearts — z-index 1 puts them above the background gradient but below the canvas (z-index auto) */
+.bg-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 28px;
+    opacity: 0.35;
+    animation: heartFloat linear infinite;
+    filter: drop-shadow(0 0 4px rgba(255, 77, 109, 0.4));
+}
+
+@keyframes heartFloat {
+    to {
+        transform: translateY(-120vh);
+    }
+}
+
+/* Running NO button — always stays visible on screen */
+#no-button.running {
+    position: fixed !important;
+    z-index: 9999;
+    pointer-events: auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: left 0.4s ease, top 0.4s ease;
+}
+
+/* Hide NO button after TAK is clicked */
+#no-button.no-hidden {
+    display: none !important;
+}
+
+/* Hearts glow after YES answer */
+.hearts-glow {
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+    animation: glowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}

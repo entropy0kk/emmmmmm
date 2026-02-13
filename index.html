@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hejhejhej 🥰</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- Decoration -->
+        <div id="bg-hearts" class="bg-hearts"></div>
+
+        <!-- HUD -->
+        <div id="hud" class="hidden">
+            <div class="hud-panel">
+                <div class="progress-bar-bg">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="score-text"><span id="score">0</span> / 20</div>
+            </div>
+        </div>
+
+        <!-- Start -->
+        <div id="start-screen" class="ui-overlay">
+            <div class="modern-panel">
+                <h1 class="romantic-title">
+                    <span class="gradient-text">Hejj Wikuss</span> 🥰
+                </h1>
+                <p>Zdobądź 20 boskiego jedzenia mój knurze, na końcu niespodzianka</p>
+                <div class="start-actions">
+                    <button id="start-button" class="btn-primary">START</button>
+                </div>
+            </div>
+
+            <!-- Side 3D Previews -->
+            <div class="side-previews">
+                <div class="preview-card">
+                    <div id="preview-toast" class="preview-canvas"></div>
+                    <div class="preview-label">BOSKI TOST</div>
+                </div>
+                <div class="preview-card">
+                    <div id="preview-tea" class="preview-canvas"></div>
+                    <div class="preview-label">HERBATKA</div>
+                </div>
+                <div class="preview-card">
+                    <div id="preview-cookie" class="preview-canvas"></div>
+                    <div class="preview-label">CIACHO</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fail -->
+        <div id="game-over-screen" class="ui-overlay hidden">
+            <div class="modern-panel">
+                <h1 class="romantic-title">
+                    <span class="gradient-text">Ups!</span> ❤️‍🩹
+                </h1>
+                <p>Trochę słabo, spróbuj jeszcze raz!</p>
+                <button id="retry-button" class="btn-primary">RETRY</button>
+            </div>
+        </div>
+
+        <!-- WIN -->
+        <div id="proposal-screen" class="ui-overlay hidden">
+            <div id="confetti-container"></div>
+            <div class="modern-panel">
+                <h1 class="romantic-title" style="font-size: 2.3rem;">
+                    <span class="gradient-text">Hej Wikuss moja dorosla</span> 🥰<br>
+                    <span class="gradient-text">Pytanie...</span> 💌
+                </h1>
+                <p>CZY ZOSTANIESZ MOJĄ WALENTYNKĄ? ❤️</p>
+                <div class="button-group">
+                    <button id="yes-button" class="btn-primary">✅ TAK</button>
+                    <button id="no-button" class="btn-primary">🙅 NIE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
